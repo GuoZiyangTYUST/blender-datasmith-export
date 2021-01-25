@@ -60,8 +60,14 @@ def write_string(io, string):
 	io.write(struct.pack('<I', length))
 	io.write(string_bytes)
 
+def is_Chinese_Char(ch):
+    if '\u4e00' <= str(ch) <= '\u9fff':
+        return True
+    return False
 
 def is_char_valid(in_char):
+	if is_Chinese_Char(in_char):
+		return True
 	char_num = ord(in_char)
 	if char_num > 47 and char_num < 58:
 		return True

@@ -15,6 +15,12 @@ from mathutils import Matrix, Vector, Euler
 import logging
 log = logging.getLogger("bl_datasmith")
 
+import builtins as __builtin__
+
+# for debug
+def printToconsole(printthing):	
+	__builtin__.print(printthing) # to system console
+
 matrix_datasmith = Matrix.Scale(100, 4)
 matrix_datasmith[1][1] *= -1.0
 
@@ -2427,7 +2433,7 @@ def collect_and_save(context, args, save_path):
 	filename = path.join(basedir, file_name + '.udatasmith')
 	log.info("writing to file: %s" % filename)
 
-	with open(filename, 'w') as f:
+	with open(filename, 'w',encoding='utf-8-sig') as f:
 		f.write(result)
 	log.info("export finished")
 
